@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bujumbura Data</title>
+  </head>
+
+  <body>
+    <!-- Retrieved data will be dumped here -->
+    <div class="city"></div>
+    <div class="wind"></div>
+    <div class="humidity"></div>
+    <div class="temp"></div>
+    <div class="Long"></div>
+    <div class="Lat"></div>
+    <!-- Add extra div for the bonus Fahrenheit temp -->
+    <div class="tempF"></div>
+
+    <div class="sunrise"></div>
+    <div class="sunset"></div>
+    <div class="currentdt"></div>
+    <div class="currentvis"></div>
+    <div class="currentLong"></div>
+    <div class="currentLat"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      // This is our API key
+      var APIKey = "";
+
+      // Here we are building the URL we need to query the database
+      var queryURL =
+        "https://api.openweathermap.org/data/2.5/weather?" +
+        "q=Irvine,California&appid=" +
+        APIKey;
+
+      var queryAll =
+        "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid=" +
+        APIKey;
+
+      // Here we run our AJAX call to the OpenWeatherMap API
+
+      $.ajax({
+        url: queryURL,
+        method: "GET",
+        success: function (response) {
+          result(response); // <-- call it here
+        },
+      })
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function (response) {
+          $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+          $(".wind").text("Wind Speed: " + response.wind.speed);
+          $(".humidity").text("Humidity: " + response.main.humidity);
+          $(".Long").text("Lon" + response.coord.lon);
+          $(".Lat").text("Lat" + response.coord.lat);
+
+          var tempF = (response.main.temp - 273.15) * 1.8 + 32;
+
+          $(".temp").text("Temperature (K) " + response.main.temp);
+          $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+
+          console.log("Wind Speed: " + response.wind.speed);
+          console.log("Humidity: " + response.main.humidity);
+          console.log("Temperature (F): " + tempF);
+          console.log("Longitude: " + response.coord.lon);
+          console.log("Latitude: " + response.coord.lat);
+        });
+
+      $.ajax({
+        url: queryAll,
+        method: "GET",
+      }).then(function () {
+        // Log the resulting object
+
+        // Transfer content to HTML
+        $(".sunrise").html(" Sunrise" + response.current.sunrise);
+        $(".sunset").text("Sunset" + response.current.sunset);
+        $(".currentdt").text("Time: " + response.current.dt);
+      });
+    </script>
+  </body>
+</html>

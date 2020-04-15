@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="data"></div>
+
+    <script type="text/javascript">
+      $.getJSON("https://jsonplaceholder.typicode.com/photos", function (data) {
+        //prepare variables to be used later
+        var $list = $("<ul>", {
+          class: "image-list",
+        });
+        var $overlay = $("#overlay");
+        var $image = $("#fullSize");
+
+        //build/construct the gallery
+        $(data).each(function (i, photoObject) {
+          // this is a temp solution, you should ensure that
+          // all your content is served from either http or https
+          photoObject.thumbnailUrl = photoObject.thumbnailUrl.replace(
+            "http://",
+            "https://"
+          );
+          photoObject.url = photoObject.url.replace("http://", "https://");
+
+          //appened to the newly created list, don't manipulate the DOM yet
+          // also you were using id="#imageGallery" for each image
+          // note that ids has to be unique in the DOM tree
+          $list.append(
+            '<li class="imageGallery"><a href="' +
+              photoObject.url +
+              '"><img data-fullimage="' +
+              photoObject.url +
+              '" src="' +
+              photoObject.thumbnailUrl +
+              '" alt="' +
+              photoObject.title +
+              '"></a></li>'
+          );
+        });
+
+        // manipulate the DOM one time only, not 5000 times
+        $("body").prepend($list);
+      });
+    </script>
+  </body>
+</html>
