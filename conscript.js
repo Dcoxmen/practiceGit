@@ -6,9 +6,9 @@ var weatherContainerEl=document.querySelector("#current-weather-container");
 var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
-var pastSearchButtonEl = document.querySelector("#past-search-buttons");
+// var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 
-var formSumbitHandler = function(event){
+var formTheSubmit = function(event){
     event.preventDefault();
     var city = cityInputEl.value.trim();
     if(city){
@@ -212,5 +212,5 @@ var display5Day = function(weather){
 
 // pastSearch();
 
-cityFormEl.addEventListener("submit", formSumbitHandler);
+cityFormEl.addEventListener("submit", formTheSubmit);
 // pastSearchButtonEl.addEventListener("click", pastSearchHandler);
