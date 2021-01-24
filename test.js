@@ -4,7 +4,7 @@ const settings = {
 	"url": "https://hotels4.p.rapidapi.com/locations/search?query=new%20york&locale=en_US",
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "3228db974cmshfd3ba3168ec4c4ap1447f8jsn94d0a757bd09",
+		"x-rapidapi-key": "add_api_key_here",
 		"x-rapidapi-host": "hotels4.p.rapidapi.com"
 	}
 };
