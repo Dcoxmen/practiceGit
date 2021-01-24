@@ -7,12 +7,50 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header class = "bg-dark text-white text-center p-2">
-        <h1>Weather Forcaster</h1>
-    </header>
-    <main class="container-fluid">
+    
+    <!-- jumborton for header -->
+    <div  class="jumborton" style="color: white;">
+        <h1 class="text-center"><strong>Weather Dashboard</strong></h1>
+    </div>
+    
 
-    </main>
+    <!-- the main container-->
+    
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- This column is for input and search history -->
+            <div class="col-lg-3">
+                <h4 class="mt-1"><strong>Search for City:</strong></h4>
+                
+                <div class="form-group form-check-inline">
+                    <input type="text" class="form-control" id="input"/>
+                    <button class="btn btn-warning" id="searchBtn">Search</button>
+                </div>
+                
+                <!-- this list is for search history -->
+                <div>
+                   <ul class="list-group" id="historyList"></ul>
+                </div>
+            </div>
+
+            <!-- this column is for present and future displaying -->
+            <div class="col-lg-9">
+                <div class="today mt-3" id="today"></div>
+                <div class="row">
+                    <div class="h2">
+                       <h2 class="mt-3" id="h2"></h2>
+                    </div>
+                    <div class="col-md-12" id="wf">
+                        <div class="d-flex" id="future"></div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+    
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
