@@ -209,7 +209,7 @@ var pastSearchHandler = function(event){
     }
 }
 
-// pastSearch();
+pastSearch();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
