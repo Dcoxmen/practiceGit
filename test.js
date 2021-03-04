@@ -1,21 +1,30 @@
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://hotels4.p.rapidapi.com/locations/search?query=new%20york&locale=en_US",
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "add_api_key_here",
-		"x-rapidapi-host": "hotels4.p.rapidapi.com"
-	}
-};
+//call and assemble data from two functions with promises
+// let firstFunction = function() {
+//     return new Promise(
+//         function(res, rej) {
+//             res("I feel kind of ")
+//         }
+//     )
+// }
 
-$.ajax(settings).done(function (response) {
-   var constBody = [...response.suggestions]
+// let secondFunction = function(firstFunctData) {
+//     return new Promise(
+//         function(res, rej) {
+//             res(firstFunctData + 'happy')
+//         }
 
-	// console.log(response.suggestions.group);
+//     )
+// }
 
-	constBody.forEach(group => {
-		console.log(group.group);
-		console.log(group.entities);
-	  });
-});
+// firstFunction().then(function(myData){
+// return secondFunction(myData)
+// }).then(function(myData){
+//     console.log(myData)
+// })
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+.then(function(response){
+    return response.json();
+}).then(function(response){
+    console.log(response)
+})
